@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learnify - Online Learning Platform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background-color: #3e64ff;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #2b50d4;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .video-section, .quiz-section, .progress-section {
+      margin-top: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    video {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .quiz-section input[type="radio"] {
+      margin-right: 10px;
+    }
+    .quiz-section label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #3e64ff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .progress-bar {
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background-color: #3e64ff;
+      transition: width 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Learnify</h1>
+    <p>Empowering Students Through Seamless Learning</p>
+  </header>
+  <nav>
+    <a href="#videos">Videos</a>
+    <a href="#quiz">Quizzes</a>
+    <a href="#progress">Progress</a>
+  </nav>
+  <div class="container">
+    <section id="videos" class="video-section">
+      <h2>Video Lesson 1</h2>
+      <video controls>
+        <source src="https://youtu.be/q8kFcpGgqZ0?si=aEiPAJ_nIvhrOpge" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <h2>Video Lesson 2</h2>
+      <video controls>
+        <source src="https://youtu.be/q8kFcpGgqZ0?si=aEiPAJ_nIvhrOpge" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+     
+    </section>
+
+    <section id="quiz" class="quiz-section">
+      <h2>Quiz</h2>
+      <p>What is the capital of France?</p>
+      <label><input type="radio" name="q1" value="A"> A) Berlin</label>
+      <label><input type="radio" name="q1" value="B"> B) Madrid</label>
+      <label><input type="radio" name="q1" value="C"> C) Paris</label>
+      <label><input type="radio" name="q1" value="D"> D) Rome</label>
+      <button onclick="checkAnswer()">Submit</button>
+      <p id="quiz-result"></p>
+    </section>
+
+    <section id="progress" class="progress-section">
+      <h2>Progress Tracker</h2>
+      <p>Lesson Completion:</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <button onclick="updateProgress()">Mark as Complete</button>
+    </section>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const options = document.getElementsByName("q1");
+      let selected;
+      for (let opt of options) {
+        if (opt.checked) {
+          selected = opt.value;
+          break;
+        }
+      }
+      const result = document.getElementById("quiz-result");
+      if (selected === "C") {
+        result.textContent = "Correct!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "Wrong answer. Try again!";
+        result.style.color = "red";
+      }
+    }
+
+    function updateProgress() {
+      const progressFill = document.getElementById("progress-fill");
+      progressFill.style.width = "100%";
+    }
+  </script>
+</body>
+</html>
